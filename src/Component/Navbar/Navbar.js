@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const [toggol, setToggle] = useState(false);
   const { user } = useContext(AuthContext);
+
+  const togol = () => {
+    setToggle(!toggol);
+  };
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -43,9 +49,19 @@ const Navbar = () => {
               <Link className="text-2xl mr-3 font-semibold " to="/blog">
                 Blog
               </Link>
-              <Link className="text-2xl mr-3 font-semibold " to="/">
-                dark/ light
-              </Link>
+
+              <div onClick={togol}>
+                {toggol ? (
+                  <Link className="text-2xl mr-3 font-semibold " to="/">
+                    dark
+                  </Link>
+                ) : (
+                  <Link className="text-2xl mr-3 font-semibold " to="/">
+                    light
+                  </Link>
+                )}
+              </div>
+
               <Link className="text-2xl mr-3 font-semibold " to="/login">
                 Login
               </Link>
@@ -63,6 +79,7 @@ const Navbar = () => {
                   <img
                     className="rounded-full"
                     src={user.photoURL}
+                    title={user.displayName}
                     style={{ width: "40px" }}
                   />
                 ) : (
@@ -95,9 +112,18 @@ const Navbar = () => {
             <Link className="text-2xl mr-3 font-semibold " to="/blog">
               Blog
             </Link>
-            <Link className="text-2xl mr-3 font-semibold " to="/">
-              dark/ light
-            </Link>
+
+            <div onClick={togol}>
+              {toggol ? (
+                <Link className="text-2xl mr-3 font-semibold " to="/">
+                  dark
+                </Link>
+              ) : (
+                <Link className="text-2xl mr-3 font-semibold " to="/">
+                  light
+                </Link>
+              )}
+            </div>
 
             <Link className="text-2xl mr-3 font-semibold " to="/register">
               Register
@@ -114,6 +140,7 @@ const Navbar = () => {
                   <img
                     className="rounded-full"
                     src={user.photoURL}
+                    title={user.displayName}
                     style={{ width: "40px" }}
                   />
                 ) : (
