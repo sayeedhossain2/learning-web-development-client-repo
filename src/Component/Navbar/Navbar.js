@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -49,6 +52,23 @@ const Navbar = () => {
               <Link className="text-2xl mr-3 font-semibold " to="/register">
                 Register
               </Link>
+              <Link
+                className="text-yellow-400 text-2xl mr-3 font-semibold "
+                to="/register"
+              >
+                {user?.displayName}
+              </Link>
+              <Link className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
+                {user?.photoURL ? (
+                  <img
+                    className="rounded-full"
+                    src={user.photoURL}
+                    style={{ width: "40px" }}
+                  />
+                ) : (
+                  <FaUser />
+                )}
+              </Link>
             </div>
           </div>{" "}
           <a className="btn btn-ghost normal-case text-xl">
@@ -78,12 +98,33 @@ const Navbar = () => {
             <Link className="text-2xl mr-3 font-semibold " to="/">
               dark/ light
             </Link>
-            <Link className="text-2xl mr-3 font-semibold " to="/login">
-              Login
-            </Link>
+
             <Link className="text-2xl mr-3 font-semibold " to="/register">
               Register
             </Link>
+            {/* <Link
+              className="text-yellow-400 text-2xl mr-3 font-semibold "
+              to="/register"
+            >
+              {user?.displayName}
+            </Link> */}
+            {user?.uid ? (
+              <Link className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
+                {user?.photoURL ? (
+                  <img
+                    className="rounded-full"
+                    src={user.photoURL}
+                    style={{ width: "40px" }}
+                  />
+                ) : (
+                  <FaUser />
+                )}
+              </Link>
+            ) : (
+              <Link className="text-2xl mr-3 font-semibold " to="/login">
+                Login
+              </Link>
+            )}
           </div>
         </div>
         <div className="navbar-end">
