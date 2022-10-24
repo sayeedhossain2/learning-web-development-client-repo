@@ -1,19 +1,19 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { creatUser, providerLogin } = useContext(AuthContext);
+  const { creatUser, providerLogin, githubProvider } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProviders = new GithubAuthProvider();
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
@@ -25,6 +25,25 @@ const Register = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorMessage);
+        setError(errorMessage);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubProvider(githubProviders)
+      .then((result) => {
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+        setError("");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GithubAuthProvider.credentialFromError(error);
+        console.error(error);
         setError(errorMessage);
       });
   };
@@ -132,7 +151,7 @@ const Register = () => {
                 <span className="pl-5"> Login via Google</span>
               </button>
               <button
-                onClick={handleGoogleSignIn}
+                onClick={handleGithubSignIn}
                 className="btn btn-outline btn-sm btn-warning"
               >
                 <FaGithub className="text-blue-600" />
