@@ -5,10 +5,18 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const [toggol, setToggle] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const togol = () => {
     setToggle(!toggol);
+  };
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.errer(error);
+      });
   };
 
   return (
@@ -52,40 +60,48 @@ const Navbar = () => {
 
               <div onClick={togol}>
                 {toggol ? (
-                  <Link className="text-2xl mr-3 font-semibold " to="/">
-                    dark
-                  </Link>
+                  <Link className="text-2xl mr-3 font-semibold ">dark</Link>
                 ) : (
-                  <Link className="text-2xl mr-3 font-semibold " to="/">
-                    light
-                  </Link>
+                  <Link className="text-2xl mr-3 font-semibold ">light</Link>
                 )}
               </div>
 
-              <Link className="text-2xl mr-3 font-semibold " to="/login">
-                Login
-              </Link>
               <Link className="text-2xl mr-3 font-semibold " to="/register">
                 Register
               </Link>
-              <Link
+              {/* <Link
                 className="text-yellow-400 text-2xl mr-3 font-semibold "
                 to="/register"
               >
                 {user?.displayName}
-              </Link>
-              <Link className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
-                {user?.photoURL ? (
-                  <img
-                    className="rounded-full"
-                    src={user.photoURL}
-                    title={user.displayName}
-                    style={{ width: "40px" }}
-                  />
-                ) : (
-                  <FaUser />
-                )}
-              </Link>
+              </Link> */}
+              {/* shall display */}
+              {user?.uid ? (
+                <Link className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
+                  <Link
+                    onClick={handleLogOut}
+                    className="text-2xl mr-3 font-semibold "
+                  >
+                    Logout
+                  </Link>
+                  {user?.photoURL ? (
+                    <>
+                      <img
+                        className="rounded-full"
+                        src={user.photoURL}
+                        title={user.displayName}
+                        style={{ width: "40px" }}
+                      />
+                    </>
+                  ) : (
+                    <FaUser />
+                  )}
+                </Link>
+              ) : (
+                <Link className="text-2xl mr-3 font-semibold " to="/login">
+                  Login
+                </Link>
+              )}
             </div>
           </div>{" "}
           <a className="btn btn-ghost normal-case text-xl">
@@ -115,13 +131,9 @@ const Navbar = () => {
 
             <div onClick={togol}>
               {toggol ? (
-                <Link className="text-2xl mr-3 font-semibold " to="/">
-                  dark
-                </Link>
+                <Link className="text-2xl mr-3 font-semibold ">dark</Link>
               ) : (
-                <Link className="text-2xl mr-3 font-semibold " to="/">
-                  light
-                </Link>
+                <Link className="text-2xl mr-3 font-semibold ">light</Link>
               )}
             </div>
 
@@ -136,13 +148,21 @@ const Navbar = () => {
             </Link> */}
             {user?.uid ? (
               <Link className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
+                <Link
+                  onClick={handleLogOut}
+                  className="text-2xl mr-3 mb-3 font-semibold "
+                >
+                  Logout
+                </Link>
                 {user?.photoURL ? (
-                  <img
-                    className="rounded-full"
-                    src={user.photoURL}
-                    title={user.displayName}
-                    style={{ width: "40px" }}
-                  />
+                  <>
+                    <img
+                      className="rounded-full"
+                      src={user.photoURL}
+                      title={user.displayName}
+                      style={{ width: "40px" }}
+                    />{" "}
+                  </>
                 ) : (
                   <FaUser />
                 )}

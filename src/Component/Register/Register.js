@@ -1,10 +1,12 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
-import { FaGoogle } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { providerLogin } = useContext(AuthContext);
+  const { creatUser, providerLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -16,17 +18,43 @@ const Register = () => {
         const token = credential.accessToken;
         const user = result.user;
         console.log(user);
+        setError("");
+      })
+
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorMessage);
+        setError(errorMessage);
+      });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    creatUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        form.reset();
+        setError("");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorMessage);
-        // ...
+        setError(errorMessage);
       });
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
@@ -42,6 +70,17 @@ const Register = () => {
                   type="text"
                   name="name"
                   placeholder="name"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  placeholder="photoURL"
                   className="input input-bordered"
                 />
               </div>
@@ -72,22 +111,38 @@ const Register = () => {
                   </a>
                 </label>
               </div>
+              <p className="font-semibold text-red-600">{error}</p>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
+              <p>
+                <small>
+                  Already hava an account?
+                  <Link to="/login">
+                    <button className="btn btn-link ">Please Login</button>
+                  </Link>
+                </small>
+              </p>
 
               <button
                 onClick={handleGoogleSignIn}
                 className="btn btn-outline btn-sm btn-warning"
               >
                 <FaGoogle className="text-blue-600" />
-                <span className="pl-5"> Continue with Google</span>
+                <span className="pl-5"> Login via Google</span>
+              </button>
+              <button
+                onClick={handleGoogleSignIn}
+                className="btn btn-outline btn-sm btn-warning"
+              >
+                <FaGithub className="text-blue-600" />
+                <span className="pl-5"> Login via Github</span>
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

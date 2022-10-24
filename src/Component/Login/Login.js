@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Form } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        form.reset();
+        setError("");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setError(errorMessage);
+      });
+  };
+
   return (
-    <div>
+    <Form onSubmit={handleSubmit}>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
@@ -15,7 +41,8 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
                   placeholder="email"
                   className="input input-bordered"
                 />
@@ -25,7 +52,8 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
@@ -35,6 +63,7 @@ const Login = () => {
                   </a>
                 </label>
               </div>
+              <p className="font-semibold text-red-600">{error}</p>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
@@ -42,7 +71,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Form>
   );
 };
 
