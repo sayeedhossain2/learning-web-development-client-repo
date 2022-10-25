@@ -16,7 +16,9 @@ const Courses = () => {
     <div className="grid lg:grid-cols-[1fr_3fr]  mx-5">
       {/* left side */}
       <div className="border-2 border-red-400 bg-black">
-        <h2>this is courses list {categories.length}</h2>
+        <h2 className="  mb-5 mt-3 text-3xl text-orange-500">
+          This has Courses {categories.length}
+        </h2>
         <div>
           {categories.map((category) => (
             <p

@@ -7,7 +7,6 @@ const PremiumCourse = () => {
   console.log(categories);
   return (
     <div>
-      <h2>this is premium component</h2>
       {categories.map((category) => (
         <PremiumCourseDetails
           key={category.id}
