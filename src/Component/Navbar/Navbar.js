@@ -115,29 +115,29 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <div className="menu menu-horizontal p-0">
-            <Link className="text-2xl mr-3 font-semibold " to="/home">
+            <Link className="text-2xl mr-4 font-semibold " to="/home">
               Home
             </Link>
 
-            <Link className="text-2xl mr-3 font-semibold " to="/courses">
+            <Link className="text-2xl mr-4 font-semibold " to="/courses">
               Courses
             </Link>
-            <Link className="text-2xl mr-3 font-semibold " to="/faq">
+            <Link className="text-2xl mr-4 font-semibold " to="/faq">
               FAQ
             </Link>
-            <Link className="text-2xl mr-3 font-semibold " to="/blog">
+            <Link className="text-2xl mr-4 font-semibold " to="/blog">
               Blog
             </Link>
 
             <div onClick={togol}>
               {toggol ? (
-                <Link className="text-2xl mr-3 font-semibold ">dark</Link>
+                <Link className="text-2xl mr-4 font-semibold ">dark</Link>
               ) : (
-                <Link className="text-2xl mr-3 font-semibold ">light</Link>
+                <Link className="text-2xl mr-4 font-semibold ">light</Link>
               )}
             </div>
 
-            <Link className="text-2xl mr-3 font-semibold " to="/register">
+            <Link className="text-2xl  font-semibold " to="/register">
               Register
             </Link>
             {/* <Link
@@ -147,10 +147,10 @@ const Navbar = () => {
               {user?.displayName}
             </Link> */}
             {user?.uid ? (
-              <Link className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
+              <Link className="mr-4 btn btn-ghost normal-case  text-xl">
                 <Link
                   onClick={handleLogOut}
-                  className="text-2xl mr-3 mb-3 font-semibold "
+                  className="text-2xl mr-4 mb-3 font-semibold "
                 >
                   Logout
                 </Link>
@@ -168,7 +168,7 @@ const Navbar = () => {
                 )}
               </Link>
             ) : (
-              <Link className="text-2xl mr-3 font-semibold " to="/login">
+              <Link className="text-2xl mr-4 font-semibold " to="/login">
                 Login
               </Link>
             )}
