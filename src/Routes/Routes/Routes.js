@@ -4,6 +4,7 @@ import Faq from "../../Component/Faq/Faq";
 import Home from "../../Component/Home/Home";
 import Login from "../../Component/Login/Login";
 import Register from "../../Component/Register/Register";
+import AllCourseDetails from "../../Courses/AllCourse/AllCourseDetails/AllCourseDetails";
 import Courses from "../../Courses/Courses/Courses";
 import Main from "../../layout/Main";
 
@@ -23,6 +24,12 @@ export const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses></Courses>,
+      },
+      {
+        path: "/categories/:id",
+        element: <AllCourseDetails></AllCourseDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/categories/${params.id}`),
       },
       {
         path: "/faq",
