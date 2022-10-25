@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { creatUser, providerLogin, githubProvider } = useContext(AuthContext);
+  const { creatUser, providerLogin, githubProvider, updateUserProfile } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
@@ -63,12 +64,22 @@ const Register = () => {
         console.log(user);
         form.reset();
         setError("");
+        handleUpdateUserProfile(name, photoURL);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorMessage);
         setError(errorMessage);
+      });
+  };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = { displayName: name, photoURL: photoURL };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
       });
   };
 
