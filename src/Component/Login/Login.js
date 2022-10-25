@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
@@ -69,6 +69,14 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+              <p>
+                <small>
+                  Not Registered Yet?
+                  <Link to="/register">
+                    <button className="btn btn-link ">Create an Account</button>
+                  </Link>
+                </small>
+              </p>
             </div>
           </div>
         </div>
