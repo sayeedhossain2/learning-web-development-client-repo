@@ -1,8 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   return (
     <div>
+      <Link to="/blogone">
+        <button className="btn btn-info"> blogone</button>
+      </Link>
       <h1 className="mb-14 mt-10 text-4xl font-bold text-teal-700">
         Few Important Question and Answer Here
       </h1>
