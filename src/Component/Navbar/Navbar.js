@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaUser } from "react-icons/fa";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [toggol, setToggle] = useState(false);
@@ -115,31 +116,40 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <div className="menu menu-horizontal p-0">
-            <Link className="text-2xl mr-4 font-semibold " to="/home">
-              Home
-            </Link>
+            {/* 
+className={({ isActive }) =>
+              isActive ? activeClassName : undefined
+            }
 
-            <Link className="text-2xl mr-4 font-semibold " to="/courses">
+*/}
+
+            <NavLink className="text-2xl mr-4 font-semibold  " to="/home">
+              Home
+            </NavLink>
+
+            <NavLink className="text-2xl mr-4 font-semibold " to="/courses">
               Courses
-            </Link>
-            <Link className="text-2xl mr-4 font-semibold " to="/faq">
+            </NavLink>
+            <NavLink className="text-2xl mr-4 font-semibold " to="/faq">
               FAQ
-            </Link>
-            <Link className="text-2xl mr-4 font-semibold " to="/blog">
+            </NavLink>
+            <NavLink className="text-2xl mr-4 font-semibold " to="/blog">
               Blog
-            </Link>
+            </NavLink>
 
             <div onClick={togol}>
               {toggol ? (
-                <Link className="text-2xl mr-4 font-semibold ">dark</Link>
+                <NavLink className="text-2xl mr-4 font-semibold ">dark</NavLink>
               ) : (
-                <Link className="text-2xl mr-4 font-semibold ">light</Link>
+                <NavLink className="text-2xl mr-4 font-semibold ">
+                  light
+                </NavLink>
               )}
             </div>
 
-            <Link className="text-2xl  font-semibold " to="/register">
+            <NavLink className="text-2xl mr-3  font-semibold " to="/register">
               Register
-            </Link>
+            </NavLink>
             {/* <Link
               className="text-yellow-400 text-2xl mr-3 font-semibold "
               to="/register"
@@ -147,13 +157,13 @@ const Navbar = () => {
               {user?.displayName}
             </Link> */}
             {user?.uid ? (
-              <Link className="mr-4 btn btn-ghost normal-case  text-xl">
-                <Link
+              <NavLink className="mr-4 btn btn-ghost normal-case  text-xl">
+                <NavLink
                   onClick={handleLogOut}
                   className="text-2xl mr-4 mb-3 font-semibold "
                 >
                   Logout
-                </Link>
+                </NavLink>
                 {user?.photoURL ? (
                   <>
                     <img
@@ -166,11 +176,11 @@ const Navbar = () => {
                 ) : (
                   <FaUser />
                 )}
-              </Link>
+              </NavLink>
             ) : (
-              <Link className="text-2xl mr-4 font-semibold " to="/login">
+              <NavLink className="text-2xl mr-4 font-semibold " to="/login">
                 Login
-              </Link>
+              </NavLink>
             )}
           </div>
         </div>

@@ -1,20 +1,16 @@
 import React from "react";
 import Pdf from "react-to-pdf";
 import { Link, useLoaderData } from "react-router-dom";
+import { FaDownload } from "react-icons/fa";
 
 const ref = React.createRef();
 
 const AllCourseDetails = () => {
+  const Swal = require("sweetalert2");
   const categories = useLoaderData();
-  //   console.log(categories);
+
   return (
     <div>
-      {/* <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf> */}
-
-      <h2>all course details page {categories.length}</h2>
-
       <div
         ref={ref}
         className="card w-96 lg:w-2/4 mt-14 mx-auto bg-base-100 shadow-xl bg-red-100"
@@ -23,25 +19,34 @@ const AllCourseDetails = () => {
           <img src={categories.photo} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
+          <h2 className="card-title mb-4">
             {categories.name}
 
             <Pdf targetRef={ref} filename="Web-Development-SubJect.pdf">
               {({ toPdf }) => (
                 <button onClick={toPdf}>
-                  <div className="badge badge-secondary">Download PDF</div>
+                  <div className="badge badge-secondary ">
+                    Download PDF <FaDownload className="ml-2 " />
+                  </div>
                 </button>
               )}
-              {/* <div className="badge badge-secondary">Download PDF</div> */}
             </Pdf>
           </h2>
-          <p>{categories.id}</p>
+
           <p>{categories.details}</p>
-          <div className="card-actions justify-end">
-            {/* <div className="badge badge-outline">Fashion</div> */}
-            <div className="badge badge-outline">Products</div>
+          <div className="card-actions justify-end mt-5">
             <Link to={`/book/${categories.id}`}>
-              <button button className="btn  btn-info">
+              <button
+                onClick={() =>
+                  Swal.fire(
+                    "Congratulations!",
+                    "You purchased this course!",
+                    "success"
+                  )
+                }
+                button
+                className="btn  btn-info"
+              >
                 Get premium access
               </button>
             </Link>
@@ -55,24 +60,10 @@ const AllCourseDetails = () => {
 export default AllCourseDetails;
 
 /* 
-import React from "react";
-import Pdf from "react-to-pdf";
-
-const ref = React.createRef();
-
-const Blogone = () => {
-  return (
-    <div>
-      <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf>
-
-      <div ref={ref}>
-        <h1>this is pdf</h1>
-      </div>
-    </div>
-  );
-};
-
-export default Blogone;
+Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})
 */
