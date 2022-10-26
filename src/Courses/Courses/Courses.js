@@ -15,7 +15,7 @@ const Courses = () => {
   return (
     <div className="grid lg:grid-cols-[1fr_3fr]  mx-5">
       {/* left side */}
-      <div className="border-2 border-red-400 bg-black">
+      <div className=" rounded-xl bg-black">
         <h2 className="  mb-5 mt-3 text-3xl text-orange-500">
           This has Courses {categories.length}
         </h2>
@@ -34,7 +34,7 @@ const Courses = () => {
         </div>
       </div>
       {/* right side */}
-      <div className="grid lg:grid-cols-2 gap-5 lg:ml-5 px-20 pt-5 border-2 border-red-400 ">
+      <div className="grid lg:grid-cols-2 gap-5 lg:ml-5 px-20 py-5 rounded-xl shadow-2xl ">
         {/* <h2>this is course title</h2> */}
         {categories.map((category) => (
           <CourseCard key={category.id} category={category}></CourseCard>
