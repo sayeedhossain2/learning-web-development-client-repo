@@ -34,7 +34,7 @@ const Courses = () => {
         </div>
       </div>
       {/* right side */}
-      <div className="grid lg:grid-cols-2 gap-5 lg:ml-5 px-20 py-5 rounded-xl shadow-2xl ">
+      <div className="grid lg:grid-cols-2 gap-5 lg:ml-5 px-16 py-5 rounded-xl shadow-2xl ">
         {/* <h2>this is course title</h2> */}
         {categories.map((category) => (
           <CourseCard key={category.id} category={category}></CourseCard>

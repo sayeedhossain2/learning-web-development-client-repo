@@ -1,10 +1,42 @@
 import React from "react";
+import lottie from "../../assect/lottie.gif";
 
 const Home = () => {
   return (
     <div>
+      <h1 className="text-4xl font-bold  text-orange-500">
+        Welcome To <span className="text-rose-700">Web Development</span> World
+      </h1>
+
+      <div className="grid  lg:grid-cols-2 shadow-2xl rounded-xl mt-10 text-white shadow-xl p-5 my-20 w-11/12 mx-auto">
+        <div className="text-black">
+          <p>
+            <span className="font-bold text-lg">Computer programming</span> is
+            the process of performing a particular computation (or more
+            generally, accomplishing a specific computing result), usually by
+            designing and building an executable computer program. Programming
+            involves tasks such as analysis, generating algorithms, profiling
+            algorithms' accuracy and resource consumption, and the
+            implementation of algorithms (usually in a chosen programming
+            language, commonly referred to as <strong>coding</strong> ).[1][2]
+            The source code of a program is written in one or more languages
+            that are intelligible to programmers, rather than machine code,
+            which is directly executed by the central processing unit. The
+            purpose of programming is to find a sequence of instructions that
+            will automate the performance of a task (which can be as complex as
+            an operating system) on a computer, often for solving a given
+            problem. Proficient programming thus usually requires expertise in
+            several different subjects, including knowledge of the application
+            domain, specialized algorithms, and formal logic.
+          </p>
+        </div>{" "}
+        <div>
+          <img className="lg:w-3/4 rounded-xl lg:ml-20" src={lottie} alt="" />
+        </div>
+      </div>
+
       {/* card 1 */}
-      <div className="lg:grid grid-cols-2 my-20 w-4/5 mx-auto">
+      <div className="lg:grid grid-cols-2 shadow-2xl p-5 rounded-xl my-20 w-4/5 mx-auto">
         <img className=" lg:w-3/4 rounded-lg" src="program2.jpg" alt="" />
         <div className="">
           <h1 className="text-4xl font-bold my-5  text-orange-500">

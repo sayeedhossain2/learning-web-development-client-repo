@@ -18,26 +18,33 @@ const Faq = () => {
           {/* no 2 question */}
           <div className="bg-pink-600 rounded-xl text-white p-5 ">
             <h1 className="text-2xl font-bold mb-5 ">
-              why are you using firebase? what other options do you have to
-              implement authentication?
+              what i am using framework this project
             </h1>
-            <p>ftgh</p>
+            <p>I am using Tailwind framework in this project</p>
           </div>
 
           {/* no 3 question */}
           <div className="bg-pink-600 rounded-xl text-white p-5 ">
             <h1 className="text-2xl font-bold mb-5">
-              How does the private route work?
+              what is speciality in this project
             </h1>
-            <p>gfhhgfyu</p>
+            <p>
+              this project have some speciality method , so one of speciality
+              you can you will detail page download just tap download icon
+              button <br />
+              another speciality is you can no go to premium page without login,
+              because this page is private, so only registerd publick can go to
+              premium page,
+            </p>
           </div>
 
           {/* no 4 question */}
           <div className="bg-pink-600 rounded-xl text-white p-5 ">
-            <h1 className="text-2xl font-bold mb-5">
-              What is Node? how does node work?
-            </h1>
-            <p>gfhfgyh</p>
+            <h1 className="text-2xl font-bold mb-5">Light and Dark mood</h1>
+            <p>
+              another speciality is you can this website dark and light mood,
+              just tab light mood for light and just tab dark button for dark
+            </p>
           </div>
         </div>
       </div>
