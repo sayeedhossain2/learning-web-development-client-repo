@@ -9,7 +9,7 @@ const Home = () => {
       </h1>
 
       <div className="grid  lg:grid-cols-2 shadow-2xl rounded-xl mt-10 text-white shadow-xl p-5 my-20 w-11/12 mx-auto">
-        <div className="text-black">
+        <div className="text-black lg:mt-10">
           <p>
             <span className="font-bold text-lg">Computer programming</span> is
             the process of performing a particular computation (or more
@@ -19,6 +19,8 @@ const Home = () => {
             algorithms' accuracy and resource consumption, and the
             implementation of algorithms (usually in a chosen programming
             language, commonly referred to as <strong>coding</strong> ).[1][2]
+            <br />
+            <br />
             The source code of a program is written in one or more languages
             that are intelligible to programmers, rather than machine code,
             which is directly executed by the central processing unit. The

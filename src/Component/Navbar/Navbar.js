@@ -62,13 +62,7 @@ const Navbar = () => {
               <NavLink className="text-2xl mr-3 font-semibold " to="/register">
                 Register
               </NavLink>
-              {/* <Link
-                className="text-yellow-400 text-2xl mr-3 font-semibold "
-                to="/register"
-              >
-                {user?.displayName}
-              </Link> */}
-              {/* shall display */}
+
               {user?.uid ? (
                 <NavLink className="mr-3 btn btn-ghost normal-case text-yellow-400 text-xl">
                   <NavLink
@@ -129,25 +123,10 @@ className={({ isActive }) =>
               Blog
             </NavLink>
 
-            {/* <div onClick={togol}>
-              {toggol ? (
-                <NavLink className="text-2xl mr-4 font-semibold ">dark</NavLink>
-              ) : (
-                <NavLink className="text-2xl mr-4 font-semibold ">
-                  light
-                </NavLink>
-              )}
-            </div> */}
-
             <NavLink className="text-2xl mr-3  font-semibold " to="/register">
               Register
             </NavLink>
-            {/* <Link
-              className="text-yellow-400 text-2xl mr-3 font-semibold "
-              to="/register"
-            >
-              {user?.displayName}
-            </Link> */}
+
             {user?.uid ? (
               <div className="mr-4 btn btn-ghost normal-case  text-xl">
                 <button
@@ -179,13 +158,18 @@ className={({ isActive }) =>
         <div className="navbar-end">
           <div onClick={togol}>
             {toggol ? (
-              <NavLink className="text-2xl mr-3 font-semibold ">
-                <FaToggleOn />{" "}
-              </NavLink>
+              <Link className="text-2xl mr-3 font-semibold ">
+                <span className="flex items-center ">
+                  <FaToggleOn /> <span className="ml-2">Dark</span>
+                </span>
+              </Link>
             ) : (
-              <NavLink className="text-2xl mr-3 font-semibold ">
-                <FaToggleOff />
-              </NavLink>
+              <Link className="text-2xl mr-3 font-semibold ">
+                <span className="flex items-center">
+                  <FaToggleOff />
+                  <span className="ml-2 ">Light</span>
+                </span>
+              </Link>
             )}
           </div>
         </div>
