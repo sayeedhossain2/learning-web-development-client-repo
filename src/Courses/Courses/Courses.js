@@ -13,7 +13,7 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className="grid lg:grid-cols-[1fr_3fr]  mx-5">
+    <div className="grid lg:grid-cols-[1fr_3fr]  ">
       {/* left side */}
       <div className=" rounded-xl bg-black">
         <h2 className="  mb-5 mt-3 text-3xl text-orange-500">
