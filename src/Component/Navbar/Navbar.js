@@ -116,7 +116,7 @@ className={({ isActive }) =>
 */}
 
             <NavLink className="text-2xl mr-4 font-semibold  " to="/home">
-              Homes
+              Home
             </NavLink>
 
             <NavLink className="text-2xl mr-4 font-semibold " to="/courses">
