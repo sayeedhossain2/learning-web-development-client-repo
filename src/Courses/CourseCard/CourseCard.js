@@ -6,7 +6,7 @@ const CourseCard = ({ category }) => {
   return (
     <div>
       <Link to={`/categories/${id}`}>
-        <div className="card w-96 bg-base-100 shadow-xl image-full h-full">
+        <div className="card w-96 bg-base-100 shadow-xl image-full h-full scale-[97%] hover:scale-[100%] duration-500">
           <figure>
             <img src={photo} alt="Shoes" />
           </figure>

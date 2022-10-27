@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Component/Blog/Blog";
+import ErrorPage from "../../Component/ErrorPage/ErrorPage";
 import Faq from "../../Component/Faq/Faq";
 import Home from "../../Component/Home/Home";
 import Login from "../../Component/Login/Login";
@@ -32,7 +33,9 @@ export const routes = createBrowserRouter([
         path: "/categories/:id",
         element: <AllCourseDetails></AllCourseDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.id}`),
+          fetch(
+            `https://web-development-server.vercel.app/categories/${params.id}`
+          ),
       },
       {
         path: "/book/:id",
@@ -42,7 +45,7 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/book/${params.id}`),
+          fetch(`https://web-development-server.vercel.app/book/${params.id}`),
       },
       {
         path: "/faq",
@@ -62,7 +65,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "*",
-        element: <div>this route is not found 404</div>,
+        element: (
+          <div className=" font-bold text-3xl  text-red-600">
+            This page is not found 404
+          </div>
+        ),
       },
     ],
   },

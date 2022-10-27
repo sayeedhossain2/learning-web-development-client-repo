@@ -50,7 +50,7 @@ const Home = () => {
 
         <img
           // style={{ height: "70vh", width: "30vw" }}
-          className=" rounded-xl mt-10 lg:mt-0 hover:scale-50 duration-500"
+          className=" rounded-xl mt-10 lg:mt-0 scale-[97%] hover:scale-[100%] duration-500"
           src="program1.jpg"
           alt=""
         />
@@ -58,7 +58,11 @@ const Home = () => {
 
       {/* card 3 */}
       <div className="lg:grid grid-cols-2 bg-rose-500 rounded-xl p-5  my-20 w-4/5 mx-auto">
-        <img className=" rounded-lg" src="program5.jpeg" alt="" />
+        <img
+          className=" rounded-lg scale-[97%] hover:scale-[100%] duration-500"
+          src="program5.jpeg"
+          alt=""
+        />
         <div className=" ml-5">
           <h1 className="text-4xl font-bold my-5  text-black">
             Learning <span className="text-yellow-400">R</span>eact
