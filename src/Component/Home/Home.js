@@ -91,14 +91,14 @@ const Home = () => {
       </div>
 
       {/* card 3 */}
-      <div className="lg:grid grid-cols-2 bg-rose-500 rounded-xl p-5  my-20 w-4/5 mx-auto">
+      <div className="lg:grid grid-cols-2 bg-black rounded-xl p-5  my-20 w-4/5 mx-auto">
         <img
           className=" rounded-lg scale-[97%] hover:scale-[100%] duration-500"
           src="program5.jpeg"
           alt=""
         />
         <div className=" ml-5">
-          <h1 className="text-4xl font-bold my-5  text-black">
+          <h1 className="text-4xl font-bold my-5  text-orange-500">
             Learning <span className="text-yellow-400">R</span>eact
           </h1>
           <p className="text-white">
